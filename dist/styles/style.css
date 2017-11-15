@@ -102,7 +102,12 @@ header img {
 /* Subreddit Tag */
 /* ----------------------------------------------------------- */
 
+.subreddit-tag-container {
+  margin-bottom: 15px;
+}
+
 .subreddit-tag {
+  margin-bottom: 8px;
   display: inline-block;
   padding: 5px 12px;
   margin-right: 8px;

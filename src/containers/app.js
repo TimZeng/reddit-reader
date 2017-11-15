@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { PostCard, Loading, SearchInput, SubredditTag } from '../components';
-import { fetchPosts, addSubreddit } from '../actions';
+import { fetchPosts, addSubreddit, updateActiveSubreddit } from '../actions';
 
 class App extends Component {
   constructor() {
@@ -30,13 +30,13 @@ class App extends Component {
   renderSubreddits() {
     const { subreddits, subredditName } = this.props;
     return (
-      <div>
+      <div className='subreddit-tag-container'>
         { subreddits.map(subreddit =>
           <SubredditTag
             key={ subreddit }
             active={ subreddit === subredditName }
             tagName={subreddit}
-            onClick={() => console.log('should switch tag')}
+            onClick={this.changeSubreddit}
             onClose={() => console.log('should remove tag')}
           />
         ) }
@@ -69,8 +69,14 @@ class App extends Component {
     search = search.replace(/\s/g, '');
 
     this.props.addSubreddit(search);
-    this.props.fetchPosts(search);
+    this.changeSubreddit(search);
     this.setState({ search: '' });
+  }
+
+  changeSubreddit = subreddit => {
+    const { fetchPosts, updateActiveSubreddit } = this.props;
+    fetchPosts(subreddit);
+    updateActiveSubreddit(subreddit);
   }
 
   renderSearchInput() {
@@ -110,7 +116,7 @@ const mapStateToProps = ({ posts, subredditName, subreddits, processing }) =>
 ({ posts, subredditName, subreddits, processing });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchPosts, addSubreddit
+  fetchPosts, addSubreddit, updateActiveSubreddit
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
