@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { PostCard, Loading, SearchInput } from '../components';
+import { PostCard, Loading, SearchInput, SubredditTag } from '../components';
 import { fetchPosts, addSubreddit } from '../actions';
 
 class App extends Component {
@@ -28,10 +28,18 @@ class App extends Component {
   }
 
   renderSubreddits() {
-    const { subreddits } = this.props;
+    const { subreddits, subredditName } = this.props;
     return (
       <div>
-        { subreddits.map(subreddit => <span key={subreddit}>{subreddit} </span>) }
+        { subreddits.map(subreddit =>
+          <SubredditTag
+            key={ subreddit }
+            active={ subreddit === subredditName }
+            tagName={subreddit}
+            onClick={() => console.log('should switch tag')}
+            onClose={() => console.log('should remove tag')}
+          />
+        ) }
       </div>
     )
   }

@@ -99,6 +99,30 @@ header img {
 }
 
 /* ----------------------------------------------------------- */
+/* Subreddit Tag */
+/* ----------------------------------------------------------- */
+
+.subreddit-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  margin-right: 8px;
+  font-size: 75%;
+  border-radius: 14px;
+  border: 1px solid var(--theme);
+  color: var(--font-color-light);
+}
+
+.subreddit-tag.active {
+  background-color: var(--theme);
+  color: var(--font-color);
+  font-weight: 700;
+}
+
+.subreddit-tag .tag-name {
+  margin-right: 8px;
+}
+
+/* ----------------------------------------------------------- */
 /* Search Input */
 /* ----------------------------------------------------------- */
 
