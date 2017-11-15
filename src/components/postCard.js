@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostCard = ({ post }) => (
+export const PostCard = ({ post }) => (
   <div className='post-card'>
     <div className='title'>
       <a href={post.data.url} target='__blank'>{post.data.title}</a>
@@ -26,4 +26,3 @@ const PostCard = ({ post }) => (
   </div>
 );
 
-export default PostCard;
