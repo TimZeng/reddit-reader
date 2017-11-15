@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { PostCard, Loading, SearchInput, SubredditTag, Alert } from '../components';
-import { fetchPosts, addSubreddit, removeSubreddit, updateActiveSubreddit } from '../actions';
+import {
+  PostCard,
+  Loading,
+  SearchInput,
+  SubredditTag,
+  Alert
+} from '../components';
+
+import {
+  fetchPosts,
+  addSubreddit,
+  removeSubreddit,
+  updateActiveSubreddit
+} from '../actions';
 
 class App extends Component {
   constructor() {
@@ -21,7 +33,7 @@ class App extends Component {
   renderHeader() {
     return (
       <header>
-        <img src='https://seeklogo.com/images/R/reddit-logo-8ABF8F5F2B-seeklogo.com.png'/>
+        <img src='/images/logo.png'/>
         <span>Reddit Reader</span>
       </header>
     )

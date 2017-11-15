@@ -1,6 +1,4 @@
-import {
-  FETCH_POSTS_FAILURE, RESET_ALERT
-} from '../actions';
+import { FETCH_POSTS_FAILURE } from '../actions';
 
 export default (state = null, action) => {
 
@@ -10,9 +8,6 @@ export default (state = null, action) => {
       const { error } = action.payload;
       const message = (!!error.response && error.response.data.message) || error.message || 'There is some issue loading posts.';
       return `subreddit '${action.payload.subreddit}': ${message}`;
-
-    case RESET_ALERT:
-      return null;
 
   }
 

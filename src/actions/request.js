@@ -8,14 +8,14 @@ export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
 
 const fetchPostsRequest = () => ({type: FETCH_POSTS_REQUEST});
 
-const fetchPostsFailure = (subreddit, error) => ({
-  type: FETCH_POSTS_FAILURE,
-  payload: { subreddit, error: error }
-});
-
 const fetchPostsSuccess = res => ({
   type: FETCH_POSTS_SUCCESS,
   payload: res.data.data.children
+});
+
+const fetchPostsFailure = (subreddit, error) => ({
+  type: FETCH_POSTS_FAILURE,
+  payload: { subreddit, error: error }
 });
 
 export const fetchPosts = (subredditName, params={}) => {
