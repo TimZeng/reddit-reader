@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { PostCard, Loading, SearchInput } from '../components';
-import { fetchPosts } from '../actions';
+import { fetchPosts, addSubreddit } from '../actions';
 
 class App extends Component {
   constructor() {
@@ -28,10 +28,10 @@ class App extends Component {
   }
 
   renderSubreddits() {
-    const { subredditName } = this.props;
+    const { subreddits } = this.props;
     return (
       <div>
-        { subredditName }
+        { subreddits.map(subreddit => <span key={subreddit}>{subreddit} </span>) }
       </div>
     )
   }
@@ -60,6 +60,7 @@ class App extends Component {
     let { search } = this.state;
     search = search.replace(/\s/g, '');
 
+    this.props.addSubreddit(search);
     this.props.fetchPosts(search);
     this.setState({ search: '' });
   }
@@ -97,11 +98,11 @@ class App extends Component {
   }
 };
 
-const mapStateToProps = ({ posts, subredditName, processing }) =>
-({ posts, subredditName, processing });
+const mapStateToProps = ({ posts, subredditName, subreddits, processing }) =>
+({ posts, subredditName, subreddits, processing });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchPosts
+  fetchPosts, addSubreddit
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
