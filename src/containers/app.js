@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { PostCard, Loading, SearchInput, SubredditTag } from '../components';
+import { PostCard, Loading, SearchInput, SubredditTag, Alert } from '../components';
 import { fetchPosts, addSubreddit, removeSubreddit, updateActiveSubreddit } from '../actions';
 
 class App extends Component {
@@ -53,6 +53,11 @@ class App extends Component {
     return (
       <Loading />
     )
+  }
+
+  renderAlert() {
+    const { alert } = this.props;
+    return ( <Alert alert={alert}/> )
   }
 
   updateSearch = search => {
@@ -107,6 +112,7 @@ class App extends Component {
       <div>
         { this.renderHeader() }
         { this.renderLoading() }
+        { this.renderAlert() }
 
         <div className='container'>
           { this.renderSubreddits() }
@@ -122,8 +128,8 @@ class App extends Component {
   }
 };
 
-const mapStateToProps = ({ posts, subredditName, subreddits, processing }) =>
-({ posts, subredditName, subreddits, processing });
+const mapStateToProps = ({ posts, subredditName, subreddits, processing, alert }) =>
+({ posts, subredditName, subreddits, processing, alert });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchPosts, addSubreddit, removeSubreddit, updateActiveSubreddit
