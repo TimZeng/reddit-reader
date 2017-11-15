@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
 
+import PostsReducer from './reducer_posts';
+import SubredditNameReducer from './reducer_subredditName';
+
 const rootReducer = combineReducers({
-  lists: () => ({a:['a1','a2'],b:['b1','b2']}),
-  subredditName: () => 'a'
+  posts: PostsReducer,
+  subredditName: SubredditNameReducer
 });
 
 export default rootReducer;
