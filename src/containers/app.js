@@ -6,16 +6,12 @@ import { fetchPosts } from '../actions';
 
 class App extends Component {
   componentWillMount() {
-    this.props.fetchPosts('news', {
-      test1: 'test1',
-      test2: 'test2',
-      test3: 'test3'
-    });
+    this.props.fetchPosts('news');
   }
 
   render() {
     return (
-      <div>
+      <div className='container'>
         {
           this.props.posts.map(post => <p key={post.data.id}>{post.data.title}</p>)
         }
