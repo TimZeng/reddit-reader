@@ -3,6 +3,7 @@
 /* ----------------------------------------------------------- */
 
 :root {
+  --theme: #cee3f7;
   --background: #f5f7f9;
   --border: #d9dbdd;
   --font-color: #2c3e50;
@@ -51,4 +52,65 @@ body {
 
 .light-text {
   color: var(--font-color-light);
+}
+
+.website-processing {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-top: calc(50vh - 25px);
+  text-align: center;
+}
+
+.website-processing .fa-spinner {
+  font-size: 250%;
+  color: var(--theme);
+}
+
+/* ----------------------------------------------------------- */
+/* Header */
+/* ----------------------------------------------------------- */
+
+header {
+  background-color: var(--theme);
+  padding: 15px 50px;
+  color: white;
+}
+
+header h5 {
+  margin: 0;
+}
+
+header img {
+  height: 1em;
+  margin-right: 0.5em;
+}
+
+/* ----------------------------------------------------------- */
+/* Post Card */
+/* ----------------------------------------------------------- */
+
+.post-card {
+  background-color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0px 2px 9px -1px rgba(145,140,145,0.3);
+  border-radius: 3px;
+}
+
+.post-card .title {
+  margin-bottom: 10px;
+}
+
+.post-card a {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+.post-card .info {
+  font-size: 80%;
 }
