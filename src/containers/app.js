@@ -68,9 +68,11 @@ class App extends Component {
     let { search } = this.state;
     search = search.replace(/\s/g, '');
 
-    this.props.addSubreddit(search);
-    this.changeSubreddit(search);
-    this.setState({ search: '' });
+    if ( search.length > 0 ) {
+      this.props.addSubreddit(search);
+      this.changeSubreddit(search);
+      this.setState({ search: '' });
+    }
   }
 
   changeSubreddit = subreddit => {
@@ -80,12 +82,15 @@ class App extends Component {
   }
 
   renderSearchInput() {
+    let { search } = this.state;
+    search = search.replace(/\s/g, '');
     return (
       <SearchInput
         value={this.state.search}
         onChange={this.updateSearch}
         onKeyPress={this.handleKeyPress}
-        onClick={null}
+        onClick={this.submitSearch}
+        disabled={search.length === 0}
       />
     )
   }
