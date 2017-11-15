@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { PostCard, Loading, SearchInput, SubredditTag } from '../components';
-import { fetchPosts, addSubreddit, updateActiveSubreddit } from '../actions';
+import { fetchPosts, addSubreddit, removeSubreddit, updateActiveSubreddit } from '../actions';
 
 class App extends Component {
   constructor() {
@@ -31,13 +31,14 @@ class App extends Component {
     const { subreddits, subredditName } = this.props;
     return (
       <div className='subreddit-tag-container'>
-        { subreddits.map(subreddit =>
+        { subreddits.map((subreddit, index) =>
           <SubredditTag
             key={ subreddit }
             active={ subreddit === subredditName }
             tagName={subreddit}
+            index={index}
             onClick={this.changeSubreddit}
-            onClose={() => console.log('should remove tag')}
+            onClose={this.removeSubreddit}
           />
         ) }
       </div>
@@ -81,6 +82,10 @@ class App extends Component {
     updateActiveSubreddit(subreddit);
   }
 
+  removeSubreddit = index => {
+    this.props.removeSubreddit(index);
+  }
+
   renderSearchInput() {
     let { search } = this.state;
     search = search.replace(/\s/g, '');
@@ -121,7 +126,7 @@ const mapStateToProps = ({ posts, subredditName, subreddits, processing }) =>
 ({ posts, subredditName, subreddits, processing });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchPosts, addSubreddit, updateActiveSubreddit
+  fetchPosts, addSubreddit, removeSubreddit, updateActiveSubreddit
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

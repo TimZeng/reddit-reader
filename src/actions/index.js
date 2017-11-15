@@ -9,6 +9,11 @@ export const addSubreddit = subreddit => ({
   payload: subreddit
 });
 
+export const removeSubreddit = index => ({
+  type: REMOVE_SUBREDDIT,
+  payload: index
+});
+
 export const updateActiveSubreddit = subreddit => ({
   type: UPDATE_ACTIVE_SUBREDDIT,
   payload: subreddit
