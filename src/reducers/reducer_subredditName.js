@@ -1,1 +1,3 @@
-export default ( state, action ) => 'b';
+export default ( state='news', action ) => {
+  return state;
+};

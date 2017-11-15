@@ -71,6 +71,14 @@ body {
   color: var(--theme);
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
+.button.disabled:hover {
+  cursor: not-allowed;
+}
+
 /* ----------------------------------------------------------- */
 /* Header */
 /* ----------------------------------------------------------- */
@@ -88,6 +96,34 @@ header h5 {
 header img {
   height: 1em;
   margin-right: 0.5em;
+}
+
+/* ----------------------------------------------------------- */
+/* Search Input */
+/* ----------------------------------------------------------- */
+
+.search-input {
+  background-color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0px 2px 9px -1px rgba(145,140,145,0.3);
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-input input {
+  color: var(--font-color-light);
+  height: 24px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  width: 90%;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.search-input input::placeholder {
+  color: var(--border);
 }
 
 /* ----------------------------------------------------------- */
